@@ -1,0 +1,17 @@
+---
+- name: fetch file from server1 to cotroller
+  hosts: 172.31.14.225
+  tasks:
+    - name: fetch file from server1
+      fetch:
+        src: /tmp/mygit/file1
+        dest: /tmp
+
+- name: copy file from contoller to server2
+  hosts: 172.31.2.143
+  tasks:
+     - name: copy file to server2
+       copy:
+         src: /tmp/172.31.14.225/tmp/mygit
+         dest: /var/tmp
+...

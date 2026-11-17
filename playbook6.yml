@@ -1,0 +1,22 @@
+---
+- name: Create user and create file in home directory
+  hosts: all
+  tasks:
+    - name: create user
+      user:
+        name: chotu
+        password: 12345
+        uid: 6789
+        comment: 'a super user'
+        home: /tmp/chotu
+        shell: /bin/bash
+        state: present
+
+    - name: Create file in home dir
+      file:
+        name: /tmp/chotu/file1
+        state: touch
+        owner: chotu
+        group: root
+        mode: 755
+...
